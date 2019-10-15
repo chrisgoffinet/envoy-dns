@@ -18,7 +18,7 @@ spec:
     - sleep
     - "1000000"
   - name: envoy
-    image: envoyproxy/envoy:latest
+    image: envoyproxy/envoy:v1.10.0
     volumeMounts:
     - name: config-volume
       mountPath: /etc/envoy
