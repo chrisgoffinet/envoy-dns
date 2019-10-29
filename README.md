@@ -26,10 +26,17 @@ $ curl http://localhost:10000
 Hi there, I love !#
 ```
 
-Block DNS via iptables
+Block DNS via iptables using DROP (sends nothing back)
 
 ```
 $ iptables -I OUTPUT -p udp --dport 53 -j DROP
+$ curl http://localhost:10000
+# no healthy upstream
+```
+
+Block DNS via iptables using REJECT (sends a SYN back letting client know)
+```
+$ iptables -I OUTPUT -p udp --dport 53 -j REJECT
 $ curl http://localhost:10000
 # no healthy upstream
 ```
