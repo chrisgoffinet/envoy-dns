@@ -1,3 +1,4 @@
+# Test Setup
 Pod-Envoy creates a pod with two containers. First container is ubuntu, second is envoy.
 
 ```
@@ -35,3 +36,13 @@ $ iptables -I OUTPUT -p udp --dport 53 -j REJECT
 $ curl http://localhost:10000
 # no healthy upstream
 ```
+
+# Building Envoy
+If you need to build a release version of Envoy to test with here are the instructions.
+
+```
+$ ./ci/run_envoy_docker.sh './ci/do_ci.sh bazel.release.server_only'
+$ docker build -f ci/Dockerfile-envoy-image -t envoy .
+```
+
+This will produce a docker image tagged `envoy`
