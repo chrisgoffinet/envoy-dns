@@ -14,7 +14,7 @@ spec:
       name: envoy
   containers:
   - name: ubuntu
-    image: ubuntu:latest
+    image: threecomma/baseos:latest
     securityContext:
       privileged: true
     command:
@@ -30,16 +30,3 @@ spec:
     - "debug"
     - "-c"
     - "/etc/envoy/envoy.yaml"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: myapp
-spec:
-  selector:
-    app: myapp
-  ports:
-    - protocol: TCP
-      name: http
-      port: 80
-      targetPort: 8080
