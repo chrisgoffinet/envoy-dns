@@ -14,12 +14,7 @@ $ kubectl exec -it envoy -c ubuntu sh
 
 <ENTER>
 
-Once inside the container:
-
-```
-$ apt-get update && apt-get install curl iptables dnsutils
-```
-curl envoy to make sure you get a response from upstream cluster:
+Once inside the container (ubuntu):
 
 ```
 $ curl http://localhost:10000
